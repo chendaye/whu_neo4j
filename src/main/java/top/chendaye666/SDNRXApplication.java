@@ -22,13 +22,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author Michael J. Simons
+ * @author Mchendaye666
  */
 @SpringBootApplication
-public class DemoApplication {
+public class SDNRXApplication {
 
 	public static void main(String... args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(SDNRXApplication.class, args);
 	}
 
 }

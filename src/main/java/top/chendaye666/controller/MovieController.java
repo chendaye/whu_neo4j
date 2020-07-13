@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 // end::getting.started[]
 /**
- * @author Michael J. Simons
+ * @author chendaye666
  */
 // tag::getting.started[]
 @RestController

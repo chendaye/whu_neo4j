@@ -35,7 +35,7 @@ import org.neo4j.springframework.data.core.schema.Relationship;
 // end::mapping.annotations[]
 
 /**
- * @author Michael J. Simons
+ * @author chendaye666
  */
 // tag::mapping.annotations[]
 @Node("Movie") // <.>

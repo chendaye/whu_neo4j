@@ -23,7 +23,7 @@ import java.util.List;
 import org.neo4j.springframework.data.core.schema.RelationshipProperties;
 
 /**
- * @author Gerrit Meier
+ * @author chendaye666
  */
 // tag::mapping.relationship.properties[]
 @RelationshipProperties

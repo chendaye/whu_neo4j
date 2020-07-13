@@ -25,7 +25,7 @@ import org.neo4j.springframework.data.core.schema.Node;
 // end::mapping.annotations[]
 
 /**
- * @author Gerrit Meier
+ * @author chendaye666
  */
 // tag::mapping.annotations[]
 @Node("Person")
