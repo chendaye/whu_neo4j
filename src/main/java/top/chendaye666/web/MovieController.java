@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package top.chendaye666.controller;
+package top.chendaye666.web;
 
 // tag::getting.started[]
 

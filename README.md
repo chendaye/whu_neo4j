@@ -212,3 +212,163 @@ order by movie.name # 结果排序
 skip 20 # 跳过前面2页； 10*2=20
 limit 10 # 每页返回 10 个
 ```
+## create
+
+- 创建节点
+```cypher
+create newuser
+{
+    name:'Greace',
+    yearOfBirth: 2000,
+    email: 'chendaye666@gmail.com'
+}
+return newuser;
+```
+
+- 创建关系
+- 使Grace 成为john 朋友
+```cypher
+start john = node:users(name = "John"), grace = node(10)
+create john-[r:IS_FRIEND_OF]->grace
+return r;
+```
+
+## 事务
+
+> 执行cypher时，每一个查询都包含于一个事务中； 所有事务都由 Neo4j的殷勤负责；查询成功自动提交，失败，自动回滚
+
+> 可以在一个事务中执行多个查询，并且在事务的最后提交或者回滚每一个查询
+
+- 一次多个查询
+- 同时新建一个节点和一个关系
+```cypher
+# 创建了John的朋友Grace Spencer两次，将得到两个Grace Spencer节点和两个从John节点的IS_FRIEND_OF关系。
+# 这可能不是想要的结果。要只创建不存在的图形实体，应该使用创建唯一的（create unique）Cypher命令
+start john = node:user(name = "John")
+create john
+        -[r:IS_FRIEND_OF]->
+        (grace {
+        name: 'Grace',
+        yearOfBirth: 2000,
+        email: 'chendaye666@gmail.com'
+})
+return r,grace;
+
+# 对前面例子的唯一改变是使用create unique命令。多次运行这段程序将不会产生实体数的乘积——将总是有一个Grace Spencer节点
+# 和一个在John和Grace节点之间的IS_FRIEND_OF关系
+start john = node:user(name = "John")
+create unique john
+        -[r:IS_FRIEND_OF]->
+        (grace {
+        name: 'Grace',
+        yearOfBirth: 2000,
+        email: 'chendaye666@gmail.com'
+})
+return r,grace;
+```
+
+## 删除
+
+```cypher
+# 只能删除没有任何关系的节点
+start grace = node(10)
+delete grace;
+
+# 要删除一个节点，也要删除它的关系
+start grace = node(10)
+match grace-[r]-()
+delete grace,r;
+
+# 删除属性
+start n=node(1)
+delete n.group;
+```
+
+## 更新
+
+- 更新单个节点
+- 先选中节点，再用set更新
+- 如果属性不存在将创建属性
+- 不允许有空属性值
+```cypher
+start john=node:users(name = "john")
+set john.yearOfBirth = 1973
+
+# 多个属性
+start user=node(1,2)
+set user.group = 'ADMINT'
+```
+
+## 聚合
+
+- count
+```cypher
+start user=node(*)
+match user-[:IS_FRIEND_OF]-()
+return user,count(*)
+order by count(*) desc;
+```
+
+- avg
+```cypher
+start john=node:users(name = "John")
+match john-[:IS_FRIEND_OF]-(friend)
+where HAS(friend.teayOfBirth)
+return ave(2020-friend.yearOfBirth);
+```
+
+
+## 函数
+
+- TYPE函数: 返回每一个关系的类型与数量
+```cypher
+start n=node:users(name='John')
+match n-[rel]-()
+return TYPE(rel),count(*);
+```
+
+- 迭代查询函数
+- ·HAS（graphEntity.propertyName）——如果一个节点或关系具有给定名字的属性存在，则返回true。
+- ·NODES（path）——把一个路径转换成一个可迭代的节点集。
+- ·ALL（x in collection where predicate（x））——如果collection中的每一个单个元素匹配了给定的predicate，则返回true。
+- Neo4j支持许多具有相似目的的函数。例如，与NODES（path）函数类似、RELATIO　NSHIPS（path）函数返回在一个给定路径上的所有节点集。
+- ·NONE（x in collection where predicate（x））——如果提供的集合中没有元素匹配谓词表述，返回true；否则，返回false。
+- ·ANY（x in collection where predicate（x））——如果至少有一个元素匹配谓词表述，返回true；如果没有匹配的，返回false。
+- ·SINGLE（x in collection where predicate（x））——如果正好有一个元素匹配谓词表述，返回true；如果没有或多于一个匹配的，这个函数返回false。
+```cyper
+start john=node:users(name = "john"),
+      kate=node:users(name = "kate")
+match p = john-[:IS_FRIEND_OF*1..3]-(kate)  # 递归3级，找朋友, p是路径
+where ALL(   # 路径上的人 都要有facebookI
+    user in NODES(p)
+    where HAS(User.facebookId)
+)
+return p;
+```
+
+
+## with 管道
+
+> 将一个插叙输出连接到另一个查询中
+
+- 类似于sql 中 的 HAVING 过滤聚合函数的作用
+```cypher
+start n=node(1)
+match n-[rel]-()
+with TYPE(rel) as type, count(*) as count # 不返回聚合计数；使用管道输送计数
+where count > 1
+return type,count;
+```
+
+## cypher 兼容性
+
+> cypher 变化非常快，有新旧查询语法兼容问题
+
+- 指定cypher版本
+```cypher
+CYPHER 1.8 start n=node(1)
+match n-[rel]-()
+with TYPE(rel) as type, count(*) as count # 不返回聚合计数；使用管道输送计数
+where count > 1
+return type,count;
+```
