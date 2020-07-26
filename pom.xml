@@ -1,197 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-| Copyright (c) 2019-2020 "Neo4j,"
-| Neo4j Sweden AB [https://neo4j.com]
-|
-| This file is part of Neo4j.
-|
-| Licensed under the Apache License, Version 2.0 (the "License");
-| you may not use this file except in compliance with the License.
-| You may obtain a copy of the License at
-|
-|     https://www.apache.org/licenses/LICENSE-2.0
-|
-| Unless required by applicable law or agreed to in writing, software
-| distributed under the License is distributed on an "AS IS" BASIS,
-| WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-| See the License for the specific language governing permissions and
-| limitations under the License.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<groupId>org.springframework.boot</groupId>
-		<version>2.3.0.RELEASE</version>
-		<relativePath></relativePath>
-		<!-- lookup parent from repository -->
-	</parent>
+    <artifactId>neo4j</artifactId>
+    <groupId>top.chendaye666</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>neo4j</module>
+        <module>overview</module>
+        <module>autoconfigure</module>
+        <module>spring-application</module>
+        <module>spring-webmvc</module>
+        <module>springboot-webmvc</module>
+        <module>springboot-view</module>
+        <module>springboot-rest</module>
+        <module>spring-servlet</module>
+        <module>spring-boot-servlet</module>
+    </modules>
+    <packaging>pom</packaging>
 
-	<groupId>top.chendaye666.spring.neo4j</groupId>
-	<artifactId>spring-data-neo4j-rx-reactive-web</artifactId>
-	<version>999-SNAPSHOT</version>
+    <name>spring-boot-neo4j</name>
+    <description>Spring Boot And Neo4j Learn</description>
 
-	<name>SDN⚡️RX  for Whu</name>
-	<description>Demonstrating how to use SDN⚡️RX for Reactive Spring Boot from within Spring Boot.</description>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+<!--        <version>2.0.2.RELEASE</version>-->
+        <version>2.3.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-	<properties>
-		<java.version>11</java.version>
-		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-		<maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
-		<maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
-		<spring-data-neo4j-rx.version>${revision}${sha1}${changelist}</spring-data-neo4j-rx.version>
-		<testcontainers.version>1.13.0</testcontainers.version>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+<!--        <java.version>1.8</java.version>-->
+        <java.version>11</java.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.neo4j.springframework.data</groupId>
-			<artifactId>spring-data-neo4j-rx-spring-boot-starter</artifactId>
-			<version>${spring-data-neo4j-rx.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.neo4j.springframework.data</groupId>
-			<artifactId>spring-data-neo4j-rx-spring-boot-test-autoconfigure</artifactId>
-			<version>${spring-data-neo4j-rx.version}</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>neo4j-harness</artifactId>
-					<groupId>org.neo4j.test</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>${testcontainers.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>neo4j</artifactId>
-			<version>${testcontainers.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
-	<build>
-		<finalName>movie-api</finalName>
-		<plugins>
-			<plugin>
-				<groupId>com.github.ekryd.sortpom</groupId>
-				<artifactId>sortpom-maven-plugin</artifactId>
-				<version>2.8.0</version>
-				<executions>
-					<execution>
-						<phase>verify</phase>
-						<goals>
-							<goal>sort</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<keepBlankLines>true</keepBlankLines>
-					<nrOfIndentSpace>-1</nrOfIndentSpace>
-					<sortProperties>true</sortProperties>
-					<sortDependencies>groupId,artifactId</sortDependencies>
-					<createBackupFile>false</createBackupFile>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
-	<!-- Those profiles are not relevant to the examples and are only needed for SDN/RX release chain. -->
-	<profiles>
-		<profile>
-			<id>revisionMissing</id>
-			<activation>
-				<property>
-					<name>!revision</name>
-				</property>
-			</activation>
-			<properties>
-				<revision>1.1.1</revision>
-			</properties>
-		</profile>
-		<profile>
-			<id>sha1Missing</id>
-			<activation>
-				<property>
-					<name>!sha</name>
-				</property>
-			</activation>
-			<properties>
-				<sha1></sha1>
-			</properties>
-		</profile>
-		<profile>
-			<id>changelistMissing</id>
-			<activation>
-				<property>
-					<name>!changelist</name>
-				</property>
-			</activation>
-			<properties>
-				<changelist></changelist>
-			</properties>
-		</profile>
-	</profiles>
 </project>

@@ -1,0 +1,15 @@
+# ApplicationContextInitializer ʵ������
+org.springframework.context.ApplicationContextInitializer=\
+top.chendaye666.neo4j.context.AfterHelloWorldApplicationContextInitializer,\
+top.chendaye666.neo4j.context.HelloWorldApplicationContextInitializer
+
+# ApplicationListener ʵ������
+org.springframework.context.ApplicationListener=\
+top.chendaye666.neo4j.listener.AfterHelloWorldApplicationListener,\
+top.chendaye666.neo4j.listener.HelloWorldApplicationListener,\
+top.chendaye666.neo4j.listener.BeforeConfigFileApplicationListener
+
+# SpringApplicationRunListener ʵ������
+org.springframework.boot.SpringApplicationRunListener=\
+top.chendaye666.neo4j.run.HelloWorldRunListener
+ 

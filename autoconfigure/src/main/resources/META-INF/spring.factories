@@ -1,0 +1,3 @@
+# 自动装配
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+top.chendaye666.neo4j.learnAutoComfigyration.configuration.HelloWorldAutoConfiguration

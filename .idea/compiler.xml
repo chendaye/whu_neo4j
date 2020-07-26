@@ -6,16 +6,63 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-data-neo4j-rx-examples-reactive-web" />
+        <module name="neo4j-autoconfigure" />
+        <module name="neo4j-springboot-webmvc" />
+        <module name="neo4j-application" />
+        <module name="neo4j-neo4j" />
+        <module name="neo4j-springboot-rest" />
+        <module name="neo4j-spring-boot-servlet" />
+        <module name="neo4j-springboot-view" />
+        <module name="neo4j-spring-servlet" />
+        <module name="spring-boot-overview" />
+        <module name="neo4j-spring-webmvc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dive-in-spring-boot" target="1.8" />
+      <module name="neo4j" target="11" />
+      <module name="neo4j-application" target="11" />
+      <module name="neo4j-autoconfigure" target="11" />
+      <module name="neo4j-neo4j" target="11" />
+      <module name="neo4j-spring-boot-servlet" target="11" />
+      <module name="neo4j-spring-servlet" target="11" />
+      <module name="neo4j-spring-webmvc" target="11" />
+      <module name="neo4j-springboot-rest" target="11" />
+      <module name="neo4j-springboot-view" target="11" />
+      <module name="neo4j-springboot-webmvc" target="11" />
+      <module name="spring-boot-autoconfigure" target="1.8" />
+      <module name="spring-boot-overview" target="11" />
+      <module name="spring-boot-servlet" target="1.8" />
+      <module name="spring-boot-spring-application" target="1.8" />
       <module name="spring-data-neo4j-rx-examples-reactive-web" target="11" />
+      <module name="spring-servlet" target="1.8" />
+      <module name="spring-webmvc" target="1.8" />
+      <module name="springboot-rest" target="1.8" />
+      <module name="springboot-view" target="1.8" />
+      <module name="springboot-webmvc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="neo4j-application" options="-parameters" />
+      <module name="neo4j-autoconfigure" options="-parameters" />
+      <module name="neo4j-neo4j" options="-parameters" />
+      <module name="neo4j-spring-boot-servlet" options="-parameters" />
+      <module name="neo4j-spring-servlet" options="-parameters" />
+      <module name="neo4j-spring-webmvc" options="-parameters" />
+      <module name="neo4j-springboot-rest" options="-parameters" />
+      <module name="neo4j-springboot-view" options="-parameters" />
+      <module name="neo4j-springboot-webmvc" options="-parameters" />
+      <module name="spring-boot-autoconfigure" options="-parameters" />
+      <module name="spring-boot-overview" options="-parameters" />
+      <module name="spring-boot-servlet" options="-parameters" />
+      <module name="spring-boot-spring-application" options="-parameters" />
       <module name="spring-data-neo4j-rx-examples-reactive-web" options="-parameters" />
+      <module name="spring-servlet" options="-parameters" />
+      <module name="spring-webmvc" options="-parameters" />
+      <module name="springboot-rest" options="-parameters" />
+      <module name="springboot-view" options="-parameters" />
+      <module name="springboot-webmvc" options="-parameters" />
     </option>
   </component>
 </project>

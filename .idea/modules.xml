@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/spring-data-neo4j-rx-examples-reactive-web.iml" filepath="$PROJECT_DIR$/spring-data-neo4j-rx-examples-reactive-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-application/neo4j-application.iml" filepath="$PROJECT_DIR$/spring-application/neo4j-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autoconfigure/neo4j-autoconfigure.iml" filepath="$PROJECT_DIR$/autoconfigure/neo4j-autoconfigure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/neo4j/neo4j-neo4j.iml" filepath="$PROJECT_DIR$/neo4j/neo4j-neo4j.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-servlet/neo4j-spring-boot-servlet.iml" filepath="$PROJECT_DIR$/spring-boot-servlet/neo4j-spring-boot-servlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-servlet/neo4j-spring-servlet.iml" filepath="$PROJECT_DIR$/spring-servlet/neo4j-spring-servlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-webmvc/neo4j-spring-webmvc.iml" filepath="$PROJECT_DIR$/spring-webmvc/neo4j-spring-webmvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-rest/neo4j-springboot-rest.iml" filepath="$PROJECT_DIR$/springboot-rest/neo4j-springboot-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-view/neo4j-springboot-view.iml" filepath="$PROJECT_DIR$/springboot-view/neo4j-springboot-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-webmvc/neo4j-springboot-webmvc.iml" filepath="$PROJECT_DIR$/springboot-webmvc/neo4j-springboot-webmvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/overview/spring-boot-overview.iml" filepath="$PROJECT_DIR$/overview/spring-boot-overview.iml" />
     </modules>
   </component>
 </project>
