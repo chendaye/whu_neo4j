@@ -59,7 +59,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 class RepositoryIT {
 
 	@Container
-	private static Neo4jContainer<?> neo4jContainer = new Neo4jContainer<>("neo4j:4.0");
+	private static Neo4jContainer<?> neo4jContainer = new Neo4jContainer<>("neo4j:4.1");
 
 	@DynamicPropertySource
 	static void neo4jProperties(DynamicPropertyRegistry registry) {

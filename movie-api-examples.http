@@ -2,7 +2,7 @@ PUT http://localhost:8080/movies
 Content-Type: application/json
 
 {
-	"title": "Aeon Flux",
+	"title": "chendaye666",
 	"description": "Reactive is the new cool",
 	"actorsAndRoles": {
 		"Charlize Theron": [
@@ -30,7 +30,7 @@ Cache-Control: no-cache
 
 ###
 
-DELETE http://localhost:8080/movies/The Matrix
+DELETE http://localhost:8080/movies/The Matrix Reloaded
 Accept: */*
 Cache-Control: no-cache
 
