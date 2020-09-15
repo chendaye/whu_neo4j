@@ -1,0 +1,15 @@
+top/chendaye666/support/MovieModule$PersonEntityAsKeySerializer.class
+top/chendaye666/support/MovieModule$RoleDeserializer.class
+top/chendaye666/support/MovieModule$PersonEntityMixin.class
+top/chendaye666/domain/PersonEntity.class
+top/chendaye666/support/MovieModule.class
+top/chendaye666/support/MovieModule$MovieEntityMixin.class
+top/chendaye666/SDNRXApplication.class
+top/chendaye666/repositories/MovieRepository.class
+top/chendaye666/controller/MovieController.class
+top/chendaye666/support/MovieModule$PersonEntityAsKeyDeSerializer.class
+top/chendaye666/support/MovieModule$RolesAsContentSerializer.class
+top/chendaye666/domain/MovieEntity.class
+top/chendaye666/repositories/PersonRepository.class
+top/chendaye666/domain/Roles.class
+top/chendaye666/support/MovieModule$RoleDeserializer$1.class
