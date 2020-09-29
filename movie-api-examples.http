@@ -35,3 +35,9 @@ Accept: */*
 Cache-Control: no-cache
 
 ###
+
+GET http://whu1.chendaye666.top:8080/movies
+Accept: */*
+Cache-Control: no-cache
+
+###

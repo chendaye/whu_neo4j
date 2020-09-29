@@ -27,10 +27,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.neo4j.springframework.data.core.schema.Id;
-import org.neo4j.springframework.data.core.schema.Node;
-import org.neo4j.springframework.data.core.schema.Property;
-import org.neo4j.springframework.data.core.schema.Relationship;
+import org.neo4j.springframework.data.core.schema.*;
+import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 
 // end::mapping.annotations[]
 
@@ -38,15 +36,26 @@ import org.neo4j.springframework.data.core.schema.Relationship;
  * @author chendaye666
  */
 // tag::mapping.annotations[]
+// @Node is used to mark this class as a managed entity. It also is used to configure the Neo4j label.
+// The label defaults to the name of the class, if you’re just using plain @Node.
 @Node("Movie") // <.>
 public class MovieEntity {
 
-	@Id  // <.>
+	// 使用Neo4j 内部ID
+	@Id @GeneratedValue(UUIDStringGenerator.class)
+	private String id;
+
+	//	Each entity has to have an id. The movie class shown here uses the attribute title as a unique business key.
+	//	If you don’t have such a unique key, you can use the combination of @Id and @GeneratedValue to configure SDN/RX to use Neo4j’s internal id.
+	//	We also provide generators for UUIDs
+//	@Id  // <.>
 	private final String title;
 
+	// This shows @Property as a way to use a different name for the field than for the graph property.
 	@Property("tagline")  // <.>
 	private final String description;
 
+	// This defines a relationship to a class of type PersonEntity and the relationship type ACTED_IN
 	@Relationship(type = "ACTED_IN", direction = INCOMING) // <.>
 	// tag::mapping.relationship.properties[]
 	private Map<PersonEntity, Roles> actorsAndRoles = new HashMap<>();
@@ -55,6 +64,7 @@ public class MovieEntity {
 	@Relationship(type = "DIRECTED", direction = INCOMING)
 	private List<PersonEntity> directors = new ArrayList<>();
 
+	//	This is the constructor to be used by your application code
 	public MovieEntity(String title, String description) { // <.>
 		this.title = title;
 		this.description = description;

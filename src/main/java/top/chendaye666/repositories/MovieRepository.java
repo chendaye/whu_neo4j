@@ -26,7 +26,18 @@ import org.neo4j.springframework.data.repository.ReactiveNeo4jRepository;
 
 // end::getting.started[]
 /**
- * @author Michael J. Simons
+ * @author chendaye
+ * org.springframework.data.repository.Repository
+ *
+ * org.springframework.data.repository.CrudRepository
+ *
+ * org.springframework.data.repository.reactive.ReactiveCrudRepository
+ *
+ * org.springframework.data.repository.reactive.ReactiveSortingRepository
+ *
+ * A repository fitting to any of the movie entities above
+ *
+ * 先定义实体 Entity， 再定义 Repository 用来操作 Entity； 最后在 Controller 里面使用 Repository
  */
 // tag::getting.started[]
 public interface MovieRepository extends ReactiveNeo4jRepository<MovieEntity, String> {

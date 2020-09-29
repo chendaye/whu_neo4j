@@ -46,6 +46,7 @@ public class MovieController {
 
 	private final MovieRepository movieRepository;
 
+	//构造函数
 	public MovieController(MovieRepository movieRepository) {
 		this.movieRepository = movieRepository;
 	}
