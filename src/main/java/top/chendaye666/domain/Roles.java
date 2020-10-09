@@ -23,6 +23,10 @@ import java.util.List;
 import org.neo4j.springframework.data.core.schema.RelationshipProperties;
 
 /**
+ * ACTED_IN 参演  person -> movie
+ *
+ * 所演角色
+ *
  * @author chendaye666
  */
 // tag::mapping.relationship.properties[]
