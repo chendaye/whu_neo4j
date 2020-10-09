@@ -33,6 +33,52 @@
 ## 建模节点实体之间的关系
 
 
+# 官方图示例
+
+## Node
+
+> Movie 电影
+
+- id
+- released :发行时间
+- tagline :标语
+- title :名称
+
+> Person 人
+
+- id
+- born :出生日期
+- name :姓名
+
+## Relationship
+
+> ACTED_IN 参演  person -> movie
+
+- id
+- roles :边代表的电影角色
+
+> DIRECTED 导演  person -> movie
+
+- id
+
+> FOLLOWS 关注 person -> person
+
+- id
+
+> PRODUCED 作者 person -> movie
+
+- id
+
+> REVIEWED  影评 person -> movie
+
+- id
+- rating :评级
+- summary :概要
+
+> WROTE 编剧 person -> movie
+
+- id
+
 # Cypher
 
 **Cypher 就是 图的遍历**
