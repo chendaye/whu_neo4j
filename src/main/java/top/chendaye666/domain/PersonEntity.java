@@ -19,8 +19,10 @@
 package top.chendaye666.domain;
 
 // tag::mapping.annotations[]
+import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
+import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 
 // end::mapping.annotations[]
 
@@ -31,10 +33,15 @@ import org.neo4j.springframework.data.core.schema.Node;
 @Node("Person")
 public class PersonEntity {
 
-	@Id
+//	@Id @GeneratedValue(UUIDStringGenerator.class)
+//	private String id;
+	@Id @GeneratedValue
+	private Long id;
+
 	private final String name;
 
 	private final Integer born;
+
 
 	public PersonEntity(Integer born, String name) {
 		this.born = born;

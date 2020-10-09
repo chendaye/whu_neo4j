@@ -64,7 +64,7 @@ class ReactiveTemplateExampleTest {
 			"The Love Bug",
 			"A movie that follows the adventures of Herbie, Herbie's driver, "
 				+ "Jim Douglas (Dean Jones), and Jim's love interest, "
-				+ "Carole Bennett (Michele Lee)");
+				+ "Carole Bennett (Michele Lee)", "released", "tagline");
 
 		movie.getActorsAndRoles().put(new PersonEntity(1931, "Dean Jones"), new Roles(singletonList("Didi")));
 		movie.getActorsAndRoles().put(new PersonEntity(1942, "Michele Lee"), new Roles(singletonList("Michi")));

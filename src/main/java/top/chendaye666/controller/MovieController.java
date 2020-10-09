@@ -51,22 +51,45 @@ public class MovieController {
 		this.movieRepository = movieRepository;
 	}
 
+	// 增
 	@PutMapping
 	Mono<MovieEntity> createOrUpdateMovie(@RequestBody MovieEntity newMovie) {
 		return movieRepository.save(newMovie);
 	}
 
+	// 查
 	@GetMapping(value = { "", "/" }, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	Flux<MovieEntity> getMovies() {
 		return movieRepository
 			.findAll();
 	}
 
+	// GET http://localhost:8080/movies/by-title?title=Aeon Flux
 	@GetMapping("/by-title")
 	Mono<MovieEntity> byTitle(@RequestParam String title) {
 		return movieRepository.findOneByTitle(title);
 	}
 
+//	@GetMapping("/by-tagline")
+//	Mono<MovieEntity> byTagline(@RequestParam String tagline){
+//		return movieRepository.findOneByTagline(tagline);
+//	}
+
+	/**
+	 * @PathVariable  someUrl/{paramId}
+	 */
+//	@GetMapping("/byId/{id}")
+//	Mono<MovieEntity> byId(@PathVariable Long id){
+//		return movieRepository.findById(id);
+//	}
+
+
+	@GetMapping("/allMovies")
+//	Mono<MovieEntity> allMovies(){
+//		return movieRepository.getAllMovies();
+//	}
+
+	// 删
 	@DeleteMapping("/{id}")
 	Mono<Void> delete(@PathVariable String id) {
 		return movieRepository.deleteById(id);

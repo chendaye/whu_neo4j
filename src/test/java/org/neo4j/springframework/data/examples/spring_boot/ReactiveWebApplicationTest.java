@@ -100,7 +100,7 @@ public class ReactiveWebApplicationTest {
 
 	@Test
 	void createMovie() {
-		MovieEntity newMovie = new MovieEntity("Aeon Flux", "Reactive is the new cool");
+		MovieEntity newMovie = new MovieEntity("Aeon Flux", "Reactive is the new cool", "released", "tagline");
 		client.put().uri("/movies").bodyValue(newMovie).exchange()
 			.expectStatus().isOk();
 

@@ -1,0 +1,37 @@
+###
+
+DELETE http://localhost:8080/movies/100
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies/by-title?title=Aeon Flux
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies/byId/101
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies/by-tagline?tagline=Reactive is the new cool
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies/allMovies
+Accept: */*
+Cache-Control: no-cache
+
+###

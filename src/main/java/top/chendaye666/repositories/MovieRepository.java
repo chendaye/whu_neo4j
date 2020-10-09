@@ -19,10 +19,13 @@
 package top.chendaye666.repositories;
 
 // tag::getting.started[]
+import org.neo4j.springframework.data.repository.query.Query;
 import top.chendaye666.domain.MovieEntity;
 import reactor.core.publisher.Mono;
 
 import org.neo4j.springframework.data.repository.ReactiveNeo4jRepository;
+
+import java.util.stream.Stream;
 
 // end::getting.started[]
 /**
@@ -43,5 +46,14 @@ import org.neo4j.springframework.data.repository.ReactiveNeo4jRepository;
 public interface MovieRepository extends ReactiveNeo4jRepository<MovieEntity, String> {
 
 	Mono<MovieEntity> findOneByTitle(String title);
+
+	// 根据 tagline 查找
+//	Mono<MovieEntity> findOneByTagline(String tagline);
+
+
+//	Mono<MovieEntity> findById(Long id);
+//
+//	@Query(value = "MATCH (movie:Movie) RETURN movie;")
+//	Mono<MovieEntity> getAllMovies();
 }
 // end::getting.started[]
