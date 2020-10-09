@@ -103,6 +103,7 @@ public class MovieEntity {
 //		return tagline;
 //	}
 
+
 	public String getDescription() {
 		return description;
 	}
