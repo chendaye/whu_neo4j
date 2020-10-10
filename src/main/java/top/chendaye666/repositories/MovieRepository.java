@@ -19,18 +19,29 @@
 package top.chendaye666.repositories;
 
 // tag::getting.started[]
+import org.neo4j.driver.internal.shaded.reactor.util.annotation.Nullable;
 import top.chendaye666.domain.MovieEntity;
 import reactor.core.publisher.Mono;
-
+import reactor.core.publisher.Flux;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.neo4j.springframework.data.repository.ReactiveNeo4jRepository;
+
+import java.util.List;
 
 // end::getting.started[]
 /**
- * @author Michael J. Simons
+ * @author chendaye
+ *
+ * 过滤方法
+ * https://docs.spring.io/spring-data/neo4j/docs/current/reference/html/#repositories.definition
  */
 // tag::getting.started[]
-public interface MovieRepository extends ReactiveNeo4jRepository<MovieEntity, String> {
-
+public interface MovieRepository extends ReactiveNeo4jRepository<MovieEntity, Long> {
 	Mono<MovieEntity> findOneByTitle(String title);
+
+	@Nullable
+	Mono<MovieEntity> findByTitle(String title);
 }
 // end::getting.started[]

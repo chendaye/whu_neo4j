@@ -27,44 +27,69 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.neo4j.springframework.data.core.schema.Id;
-import org.neo4j.springframework.data.core.schema.Node;
-import org.neo4j.springframework.data.core.schema.Property;
-import org.neo4j.springframework.data.core.schema.Relationship;
+import org.neo4j.springframework.data.core.schema.*;
+import org.neo4j.springframework.data.core.support.UUIDStringGenerator;
 
-// end::mapping.annotations[]
 
 /**
  * @author chendaye666
  */
-// tag::mapping.annotations[]
+
 @Node("Movie") // <.>
 public class MovieEntity {
 
-	@Id  // <.>
+	// 使用Neo4j 内部ID
+	@Id @GeneratedValue
+	private Long id;
+
 	private final String title;
 
-	@Property("tagline")  // <.>
+	private Integer  released;
+
+	// @Property 给属性取别名
+	@Property("tagline")
 	private final String description;
 
-	@Relationship(type = "ACTED_IN", direction = INCOMING) // <.>
-	// tag::mapping.relationship.properties[]
-	private Map<PersonEntity, Roles> actorsAndRoles = new HashMap<>();
-	// end::mapping.relationship.properties[]
+	//	This is the constructor to be used by your application code
+	public MovieEntity(String title, String description, Integer released) {
+		this.description = description;
+		this.title = title;
+		this.released = released;
+	}
 
+
+	// This defines a relationship to a class of type PersonEntity and the relationship type ACTED_IN
+	// tag::mapping.relationship.properties[]  关系 ACTED_IN 有属性 roles
+	@Relationship(type = "ACTED_IN", direction = INCOMING)
+	private Map<PersonEntity, Roles> actorsAndRoles = new HashMap<>();
+
+	// 导演
 	@Relationship(type = "DIRECTED", direction = INCOMING)
 	private List<PersonEntity> directors = new ArrayList<>();
 
-	public MovieEntity(String title, String description) { // <.>
-		this.title = title;
-		this.description = description;
-	}
+	// 作者
+	@Relationship(type = "PRODUCED", direction = INCOMING)
+	private List<PersonEntity> produces = new ArrayList<>();
 
-	// Getters omitted for brevity
-	// end::mapping.annotations[]
+	// 影评
+	@Relationship(type = "REVIEWED", direction = INCOMING)
+	private List<PersonEntity> previews = new ArrayList<>();
+
+	// 编剧
+	@Relationship(type = "WROTE", direction = INCOMING)
+	private List<PersonEntity> writes = new ArrayList<>();
+
+
+	public Long getId() {
+		return id;
+	}
 
 	public String getTitle() {
 		return title;
+	}
+
+	public Integer getReleased(){
+		return released;
 	}
 
 	public String getDescription() {
@@ -78,6 +103,17 @@ public class MovieEntity {
 	public List<PersonEntity> getDirectors() {
 		return directors;
 	}
-	// tag::mapping.annotations[]
+
+	public List<PersonEntity> getProduces(){
+		return produces;
+	}
+
+	public List<PersonEntity> getPreviews() {
+		return previews;
+	}
+
+	public List<PersonEntity> getWrites() {
+		return writes;
+	}
+
 }
-// end::mapping.annotations[]

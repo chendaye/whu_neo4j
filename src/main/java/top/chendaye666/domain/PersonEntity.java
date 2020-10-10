@@ -19,6 +19,7 @@
 package top.chendaye666.domain;
 
 // tag::mapping.annotations[]
+import org.neo4j.springframework.data.core.schema.GeneratedValue;
 import org.neo4j.springframework.data.core.schema.Id;
 import org.neo4j.springframework.data.core.schema.Node;
 
@@ -30,8 +31,11 @@ import org.neo4j.springframework.data.core.schema.Node;
 // tag::mapping.annotations[]
 @Node("Person")
 public class PersonEntity {
+	// 使用Neo4j 内部ID
+	@Id @GeneratedValue
+	private Long id;
 
-	@Id
+//	@Id
 	private final String name;
 
 	private final Integer born;
@@ -41,6 +45,9 @@ public class PersonEntity {
 		this.name = name;
 	}
 
+	public Long getId() {
+		return id;
+	}
 	public Integer getBorn() {
 		return born;
 	}

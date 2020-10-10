@@ -45,8 +45,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 /**
  * A jackson module supporting our domain package.
  *
- * @author Michael J. Simons
- * @soundtrack Rammstein - Reise Reise
+ * @author chendaye
  */
 @Component
 public class MovieModule extends SimpleModule {

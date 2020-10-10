@@ -18,6 +18,9 @@
  */
 package top.chendaye666.repositories;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import top.chendaye666.domain.MovieEntity;
 import top.chendaye666.domain.PersonEntity;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -26,12 +29,18 @@ import org.neo4j.springframework.data.repository.ReactiveNeo4jRepository;
 import org.neo4j.springframework.data.repository.query.Query;
 
 /**
- * @author Gerrit Meier
+ * @author chendaye666
+ *
+ * https://neo4j.com/docs/cypher-manual/4.1/clauses/set/#set-update-a-property
+ * https://neo4j.com/docs/cypher-manual/4.1/clauses/create/#create-create-a-relationship-between-two-nodes
  */
-public interface PersonRepository extends ReactiveNeo4jRepository<PersonEntity, String> {
+public interface PersonRepository extends ReactiveNeo4jRepository<PersonEntity, Long> {
 
 	Mono<PersonEntity> findByName(String name);
 
 	@Query("MATCH (am:Movie)<-[ai:ACTED_IN]-(p:Person)-[d:DIRECTED]->(dm:Movie) return p, collect(ai), collect(d), collect(am), collect(dm)")
 	Flux<PersonEntity> getPersonsWhoActAndDirect();
+
+	@Query("MATCH (person) WHERE id(person) = $0 SET person.born = $1  RETURN person")
+	Mono<PersonEntity> setBorn(Long id, Integer born);
 }

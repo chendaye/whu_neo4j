@@ -2,16 +2,17 @@ PUT http://localhost:8080/movies
 Content-Type: application/json
 
 {
-	"title": "chendaye666",
-	"description": "Reactive is the new cool",
+	"title": "花木兰",
+	"released": 2020,
+	"description": "测试创建 Movie 节点",
 	"actorsAndRoles": {
-		"Charlize Theron": [
-			"Æon Flux"
+		"刘亦菲": [
+			"花木兰"
 		]
 	},
 	"directors": [
 		{
-			"name": "Karyn Kusama"
+			"name": "徐峥"
 		}
 	]
 }
@@ -33,5 +34,52 @@ Cache-Control: no-cache
 DELETE http://localhost:8080/movies/The Matrix Reloaded
 Accept: */*
 Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies/all
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies/37
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+
+GET http://localhost:8080/movies/all-by-title?title=chendaye666
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/movies/client?title=111
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/persons/getPersonsWhoActAndDirect
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/persons/20
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:8080/persons/setBorn
+Content-Type: application/json
+
+{
+  "id": 23,
+  "born": 3033
+}
 
 ###
